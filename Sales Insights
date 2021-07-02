@@ -1,0 +1,15 @@
+#viewing the data
+SELECT * FROM sales.customers;
+SELECT * FROM sales.transactions;
+SELECT * FROM sales.products;
+SELECT count(*) FROM sales.transactions;
+SELECT * FROM sales.transations limit 5;
+
+#selecting smaller sets to know what to clean 
+SELECT * FROM sales.transactions where market_code="MARK011";
+SELECT count(*) FROM sales.transactions where market_code="MARK011";
+SELECT * FROM sales.transactions where currency="USD";
+
+#making a new table to select specific years 
+SELECT sales.transactions.*, sales.date.* from sales.transactions INNER JOIN sales.date ON sales.transactions.order_date=sales.date.date where sales.date.year=2020
+SELECT SUM(sales.transactions.sales_amount) from sales.transactions INNER JOIN sales.date ON sales.transactions.order_date=sales.date.date where sales.date.year=2020
